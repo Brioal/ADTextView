@@ -26,8 +26,49 @@
 `void setTexts(List<AdEntity> mTexts)`|无|设置显示的数据源
 `void setOnItemClickListener(OnItemClickListener onItemClickListener)`|无|设置文字点击事件
 
+##数据源实体:AdEntity结构
+```
+ private String mFront; //前面的文字
+    private String mBack; //后面的文字
+    private String mUrl;//包含的链接
 
-#添加组件的方法
+    public AdEntity(String mFront, String mBack, String mUrl) {
+        this.mFront = mFront;
+        this.mBack = mBack;
+        this.mUrl = mUrl;
+    }
+```
+###文字点击事件接口
+```
+public interface OnItemClickListener {
+         void onClick(String mUrl); //返回所点击的内容的链接
+}
+```
+###使用方法:
+```
+ mList.add(new AdEntity("前缀1", "内容1", "连接1"));
+        mList.add(new AdEntity("前缀2", "内容2", "连接2"));
+        mList.add(new AdEntity("前缀3", "内容3", "连接3"));
+        mList.add(new AdEntity("前缀4", "内容4", "连接4"));
+        mADTextView.setFrontColor(Color.RED);
+        mADTextView.setBackColor(Color.BLACK);
+        mADTextView.setTexts(mList);
+        mADTextView.setOnItemClickListener(new ADTextView.OnItemClickListener() {
+            @Override
+            public void onClick(String mUrl) {
+                if (mToast == null) {
+                    mToast = Toast.makeText(AdTextViewActivity.this, mUrl, Toast.LENGTH_LONG);
+                } else {
+                    mToast.setText(mUrl);
+                }
+                mToast.show();
+            }
+        });
+```
+##这样设置之后即可使用.(实际项目中List更换为要显示的数据源)
+##觉得有用的可以点个star
+
+#使用此组件的方法
 #步骤1. 项目的build.gradle的allprojects更改为如下内容:
 
 ```
