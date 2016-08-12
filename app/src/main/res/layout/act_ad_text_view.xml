@@ -11,17 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:title="仿京东垂直跑马灯"
+        app:titleTextColor="@color/colorWhite">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="仿京东垂直文字滚动"
-            android:textColor="@color/colorWhite"
-            android:textSize="22sp"
-            android:typeface="sans"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -37,25 +30,61 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/ad_textview"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/act_adtext_speed"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:entries="@array/Speed">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="速度调整:"
+                android:textSize="22sp"/>
 
-        <Spinner
-            android:id="@+id/act_adtext_interval"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:entries="@array/Interval">
+            <Spinner
+                android:id="@+id/act_adtext_speed"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:entries="@array/Speed"
+                android:gravity="center">
 
-        </Spinner>
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="停顿时间调整:"
+                android:textSize="22sp"/>
+
+            <Spinner
+                android:id="@+id/act_adtext_interval"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:entries="@array/Interval"
+                android:gravity="center">
+
+            </Spinner>
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 
