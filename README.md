@@ -1,6 +1,8 @@
 # ADTextView
 #仿京东首页垂直跑马灯组件
-##演示动画:
+##京东客户端的轮播文字效果:
+![这里写图片描述](http://img.blog.csdn.net/20160530111703822)
+##本组件的演示动画:
 ![](https://github.com/Brioal/ADTextView/blob/master/art/1.gif)
 ##使用步骤:
 ###1.xml布局添加以下内容:
