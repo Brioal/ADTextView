@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="仿京东垂直文字滚动"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:typeface="sans"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.brioal.adtextviewlib.view.ADTextView
+        android:id="@+id/ad_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        app:ad_text_view_interval="2000"
+        app:ad_text_view_speed="3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/act_adtext_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/Speed">
+
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/act_adtext_interval"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/Interval">
+
+        </Spinner>
+    </LinearLayout>
+
+
+</RelativeLayout>
