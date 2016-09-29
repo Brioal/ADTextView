@@ -1,4 +1,23 @@
 # ADTextView
+#使用此组件的方法
+#步骤1. 项目的build.gradle的allprojects更改为如下内容:
+
+```
+
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+#步骤二.像添加其他开源库一样添加依赖,然后sync即可使用[![](https://jitpack.io/v/Brioal/ADTextView.svg)](https://jitpack.io/#Brioal/ADTextView)
+```
+	dependencies {
+	        compile 'com.github.Brioal:ADTextView:1.0'
+	}
+```
 #仿京东首页垂直跑马灯组件
 ##京东客户端的轮播文字效果:
 ![这里写图片描述](http://img.blog.csdn.net/20160530111703822)
@@ -70,22 +89,4 @@ public interface OnItemClickListener {
 ##这样设置之后即可使用.(实际项目中List更换为要显示的数据源)
 ##觉得有用的可以点个star
 
-#使用此组件的方法
-#步骤1. 项目的build.gradle的allprojects更改为如下内容:
 
-```
-
-	allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
-	}
-```
-
-#步骤二.像添加其他开源库一样添加依赖,然后sync即可使用
-```
-	dependencies {
-	        compile 'com.github.Brioal:ADTextView:1.0'
-	}
-```
