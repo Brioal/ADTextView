@@ -15,7 +15,7 @@
 #步骤二.像添加其他开源库一样添加依赖,然后sync即可使用[![](https://jitpack.io/v/Brioal/ADTextView.svg)](https://jitpack.io/#Brioal/ADTextView)
 ```
 	dependencies {
-	        compile 'com.github.Brioal:ADTextView:1.0'
+	        compile 'com.github.Brioal:ADTextView:1.2'
 	}
 ```
 #仿京东首页垂直跑马灯组件
