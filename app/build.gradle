@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.Brioal'
+
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "com.brioal.adtestview"
         minSdkVersion 21
@@ -22,13 +23,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    testCompile 'junit:junit:4.12'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
-    compile files('libs/butterknife-7.0.1.jar')
-    compile project(path: ':adtextviewlib')
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile project(":adtextviewlib")
 }

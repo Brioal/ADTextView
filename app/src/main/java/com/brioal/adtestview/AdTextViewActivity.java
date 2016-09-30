@@ -1,13 +1,8 @@
 package com.brioal.adtestview;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.transition.Explode;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.brioal.adtextviewlib.entity.AdEntity;
@@ -16,42 +11,34 @@ import com.brioal.adtextviewlib.view.ADTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
+public class AdTextViewActivity extends Activity {
 
 
-public class AdTextViewActivity extends AppCompatActivity {
-
-
-    @Bind(R.id.ad_textview)
     ADTextView mADTextView;
-    @Bind(R.id.act_adtext_speed)
-    Spinner mSpSpeed;
-    @Bind(R.id.act_adtext_interval)
-    Spinner mSpInterval;
 
     private List<AdEntity> mList = new ArrayList<>();
     Toast mToast;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        getWindow().setEnterTransition(new Explode());
-        getWindow().setExitTransition(new Explode());
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
     }
 
     public void init() {
         setContentView(R.layout.act_ad_text_view);
-        ButterKnife.bind(this);
+        mADTextView = (ADTextView) findViewById(R.id.ad_textview);
         mList.add(new AdEntity("前缀1", "内容1", "连接1"));
         mList.add(new AdEntity("前缀2", "内容2", "连接2"));
         mList.add(new AdEntity("前缀3", "内容3", "连接3"));
         mList.add(new AdEntity("前缀4", "内容4", "连接4"));
+        mADTextView.setSpeed(3);
+        mADTextView.setInterval(1500);
         mADTextView.setFrontColor(Color.RED);
         mADTextView.setBackColor(Color.BLACK);
-        mADTextView.setmTexts(mList);
+        mADTextView.setTexts(mList);
         mADTextView.setOnItemClickListener(new ADTextView.OnItemClickListener() {
             @Override
             public void onClick(String mUrl) {
@@ -64,65 +51,6 @@ public class AdTextViewActivity extends AppCompatActivity {
             }
         });
 
-        mSpSpeed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int speed = 1;
-                switch (position) {
-                    case 0:
-                        speed = 1;
-                        break;
-                    case 1:
-                        speed = 2;
-                        break;
-                    case 2:
-                        speed = 3;
-                        break;
-                    case 3:
-                        speed = 4;
-                        break;
-                    case 4:
-                        speed = 5;
-                        break;
-                }
-                mADTextView.setSpeed(speed);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        mSpInterval.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int interval = 1;
-                switch (position) {
-                    case 0:
-                        interval = 500;
-                        break;
-                    case 1:
-                        interval = 1000;
-                        break;
-                    case 2:
-                        interval = 1500;
-                        break;
-                    case 3:
-                        interval = 2000;
-                        break;
-                    case 4:
-                        interval = 2500;
-                        break;
-                }
-                mADTextView.setInterval(interval);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
 }

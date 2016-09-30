@@ -41,7 +41,7 @@ public class ADTextView extends View {
     private boolean isPaused = false;
 
     public interface OnItemClickListener {
-        public void onClick(String mUrl);
+         void onClick(String mUrl);
     }
 
     private OnItemClickListener OnItemClickListener;
@@ -136,7 +136,7 @@ public class ADTextView extends View {
     }
 
     //设置数据源
-    public void setmTexts(List<AdEntity> mTexts) {
+    public void setTexts(List<AdEntity> mTexts) {
         this.mTexts = mTexts;
     }
 
@@ -146,8 +146,8 @@ public class ADTextView extends View {
     }
 
     //设置速度
-    public void setSpeed(int spedd) {
-        this.mSpeed = spedd;
+    public void setSpeed(int speed) {
+        this.mSpeed = speed;
     }
 
     //设置前缀的文字颜色
@@ -158,6 +158,16 @@ public class ADTextView extends View {
     //设置正文内容的颜色
     public void setBackColor(int mBackColor) {
         mPaintContent.setColor(mBackColor);
+    }
+
+    //设置前缀文字大小
+    public void setFrontTextSize(int frontTextSize) {
+        mFrontTextSize = frontTextSize;
+    }
+
+    //设置内容文字大小
+    public void setContentTextSize(int contentTextSize) {
+        mContentTextSize = contentTextSize;
     }
 
     //初始化默认值
