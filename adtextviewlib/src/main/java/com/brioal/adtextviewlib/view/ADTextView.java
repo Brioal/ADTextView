@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 import com.brioal.adtextviewlib.R;
 import com.brioal.adtextviewlib.entity.AdEntity;
@@ -23,7 +22,7 @@ import java.util.TimerTask;
  * Created by Brioal on 2016/7/22.
  */
 
-public class ADTextView extends View {
+public class ADTextView extends android.support.v7.widget.AppCompatTextView {
     private int mSpeed; //文字出现或消失的速度 建议1~5
     private int mInterval; //文字停留在中间的时长
     private int mFrontColor; //前缀颜色
@@ -41,7 +40,7 @@ public class ADTextView extends View {
     private boolean isPaused = false;
 
     public interface OnItemClickListener {
-         void onClick(String mUrl);
+        void onClick(String mUrl);
     }
 
     private OnItemClickListener OnItemClickListener;
@@ -189,6 +188,7 @@ public class ADTextView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         if (mTexts != null) {
             AdEntity model = mTexts.get(mIndex);
             String font = model.getmFront();
@@ -210,8 +210,8 @@ public class ADTextView extends View {
                 mIndex++;
                 isPaused = false;
             }
-            canvas.drawText(back, 0, back.length(), (indexBound.right - indexBound.left) + 20, mY, mPaintContent);
-            canvas.drawText(font, 0, font.length(), 10, mY, mPaintFront);
+            canvas.drawText(back, 0, back.length(), (indexBound.right - indexBound.left) + 20 + getTotalPaddingLeft(), mY, mPaintContent);
+            canvas.drawText(font, 0, font.length(), 10 + getTotalPaddingLeft(), mY, mPaintFront);
             //移动到中间
             if (!isPaused && mY <= getMeasuredHeight() / 2 - (indexBound.top + indexBound.bottom) / 2) {
                 isMove = false;
