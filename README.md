@@ -1,6 +1,6 @@
-# ADTextView
-#使用此组件的方法
-#步骤1. 项目的build.gradle的allprojects更改为如下内容:
+
+# 使用此组件的方法
+# 步骤1. 项目的build.gradle的allprojects更改为如下内容:
 
 ```
 
@@ -12,81 +12,55 @@
 	}
 ```
 
-#步骤二.像添加其他开源库一样添加依赖,然后sync即可使用[![](https://jitpack.io/v/Brioal/ADTextView.svg)](https://jitpack.io/#Brioal/ADTextView)
+# 步骤二.像添加其他开源库一样添加依赖,然后sync即可使用[![](https://jitpack.io/v/Brioal/ADTextView.svg)](https://jitpack.io/#Brioal/ADTextView)
 ```
 	dependencies {
 	        compile 'com.github.Brioal:ADTextView:1.2'
 	}
 ```
-#仿京东首页垂直跑马灯组件
-##京东客户端的轮播文字效果:
-![这里写图片描述](http://img.blog.csdn.net/20160530111703822)
-##本组件的演示动画:
-![](https://github.com/Brioal/ADTextView/blob/master/art/1.gif)
-##使用步骤:
-###1.xml布局添加以下内容:
+## 效果图:
+## 使用步骤:
+### 1.xml组件
 ```
     <com.brioal.adtextviewlib.view.ADTextView
         android:id="@+id/ad_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-      />
-
+        android:padding="10dp"
+        />
 ```
-###2.方法及xml属性参照
-方法|xml属性|功能
-:--|:--|:--
-`void setSpeed(int speed)`|`ad_text_view_speed`|文字移动的速度
-`void setInterval(int mInterval)`|`ad_text_view_interval`|文字停留在中心的时间
-`void setFrontColor(int mFrontColor)`|`ad_text_front_color`|前缀文字颜色
-`void setBackColor(int mBackColor)`|`ad_text_content_color`|内容文字颜色
-`void setFrontTextSize(int frontTextSize)`|`ad_text_front_size`|前缀文字大小
-`void setContentTextSize(int contentTextSize)`|`ad_text_content_size`|内容文字大小
-`void setTexts(List<AdEntity> mTexts)`|无|设置显示的数据源
-`void setOnItemClickListener(OnItemClickListener onItemClickListener)`|无|设置文字点击事件
-
-##数据源实体:AdEntity结构
+#### 在xml布局内可以设置背景颜色,padding等其他一些View的基本属性
+### 2.代码设置
 ```
- private String mFront; //前面的文字
-    private String mBack; //后面的文字
-    private String mUrl;//包含的链接
-
-    public AdEntity(String mFront, String mBack, String mUrl) {
-        this.mFront = mFront;
-        this.mBack = mBack;
-        this.mUrl = mUrl;
-    }
-```
-###文字点击事件接口
-```
-public interface OnItemClickListener {
-         void onClick(String mUrl); //返回所点击的内容的链接
-}
-```
-###使用方法:
-```
- mList.add(new AdEntity("前缀1", "内容1", "连接1"));
-        mList.add(new AdEntity("前缀2", "内容2", "连接2"));
-        mList.add(new AdEntity("前缀3", "内容3", "连接3"));
-        mList.add(new AdEntity("前缀4", "内容4", "连接4"));
-        mADTextView.setFrontColor(Color.RED);
-        mADTextView.setBackColor(Color.BLACK);
-        mADTextView.setTexts(mList);
-        mADTextView.setOnItemClickListener(new ADTextView.OnItemClickListener() {
+mADTextView = findViewById(R.id.ad_textview);
+        final List<String> texts = new ArrayList<>();
+        texts.add("11 111111111111111");
+        texts.add("22 2222222222222222");
+        texts.add("33 3333333333333333");
+        texts.add("44 44444444444444444444");
+        mADTextView.setInterval(2000);
+        mADTextView.init(texts,new OnAdChangeListener() {
             @Override
-            public void onClick(String mUrl) {
-                if (mToast == null) {
-                    mToast = Toast.makeText(AdTextViewActivity.this, mUrl, Toast.LENGTH_LONG);
-                } else {
-                    mToast.setText(mUrl);
-                }
-                mToast.show();
+            public void DiyTextView(TextView textView) {
+                textView.setTextSize(20);
+                textView.setTextColor(Color.WHITE);
+                SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText());
+                builder.setSpan(new ForegroundColorSpan(Color.RED),0,2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(builder);
             }
+
         });
 ```
-##这样设置之后即可使用.(实际项目中List更换为要显示的数据源)
-##觉得有用的可以点个star
+### 核心方法是`.init(List<string> list , OnAdChangeListener listener);`,传入的List即为数据源,组件将会滚动显示传入的数据,另外可以设置间隔时间和进入退出的动画,另外在`OnAdChangeListener`的回掉里面可以对TextView进行进一步的定制,在回掉里卖弄修改的内容会被实时的显示上去
+### 提供的主要方法列表
+:--|:--
+` setInterval(int interval)`|设置间隔时间
+`setAnimationIn(int animationIn)`|设置进入动画
+`setAnimationOut(int animationOut)`|设置退出动画
+`init(final List<String> texts, OnAdChangeListener listener)`|显示内容
 
+#### 注:必须调用init方法,否则不显示内容
 
