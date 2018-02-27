@@ -19,6 +19,7 @@
 	}
 ```
 ## 效果图:
+![](https://github.com/Brioal/ADTextView/blob/master/art/1.gif)
 ## 使用步骤:
 ### 1.xml组件
 ```
