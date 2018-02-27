@@ -47,10 +47,6 @@ public class ADTextView extends TextSwitcher {
         mContext = context;
     }
 
-    public int getAnimationIn() {
-        return mAnimationIn;
-    }
-
     /**
      * 设置进入动画
      * @param animationIn
@@ -70,14 +66,11 @@ public class ADTextView extends TextSwitcher {
         return this;
     }
 
+
     /**
      * 设置退出动画
      * @return
      */
-    public int getAnimationOut() {
-        return mAnimationOut;
-    }
-
     public ADTextView setAnimationOut(int animationOut) {
         mAnimationOut = animationOut;
         return this;
