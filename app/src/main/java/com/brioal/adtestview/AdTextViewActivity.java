@@ -3,10 +3,14 @@ package com.brioal.adtestview;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.brioal.adtextviewlib.entity.AdEntity;
 import com.brioal.adtextviewlib.view.ADTextView;
+import com.brioal.adtextviewlib.view.OnAdChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,6 @@ public class AdTextViewActivity extends Activity {
 
     ADTextView mADTextView;
 
-    private List<AdEntity> mList = new ArrayList<>();
     Toast mToast;
 
 
@@ -29,26 +32,23 @@ public class AdTextViewActivity extends Activity {
 
     public void init() {
         setContentView(R.layout.act_ad_text_view);
-        mADTextView = (ADTextView) findViewById(R.id.ad_textview);
-        mList.add(new AdEntity("前缀1", "内容1", "连接1"));
-        mList.add(new AdEntity("前缀2", "内容2", "连接2"));
-        mList.add(new AdEntity("前缀3", "内容3", "连接3"));
-        mList.add(new AdEntity("前缀4", "内容4", "连接4"));
-        mADTextView.setSpeed(3);
-        mADTextView.setInterval(1500);
-        mADTextView.setFrontColor(Color.RED);
-        mADTextView.setBackColor(Color.BLACK);
-        mADTextView.setTexts(mList);
-        mADTextView.setOnItemClickListener(new ADTextView.OnItemClickListener() {
+        mADTextView = findViewById(R.id.ad_textview);
+        final List<String> texts = new ArrayList<>();
+        texts.add("11 111111111111111");
+        texts.add("22 2222222222222222");
+        texts.add("33 3333333333333333");
+        texts.add("44 44444444444444444444");
+        mADTextView.setInterval(2000);
+        mADTextView.init(texts,new OnAdChangeListener() {
             @Override
-            public void onClick(String mUrl) {
-                if (mToast == null) {
-                    mToast = Toast.makeText(AdTextViewActivity.this, mUrl, Toast.LENGTH_LONG);
-                } else {
-                    mToast.setText(mUrl);
-                }
-                mToast.show();
+            public void DiyTextView(TextView textView) {
+                textView.setTextSize(20);
+                textView.setTextColor(Color.WHITE);
+                SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText());
+                builder.setSpan(new ForegroundColorSpan(Color.RED),0,2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(builder);
             }
+
         });
 
     }

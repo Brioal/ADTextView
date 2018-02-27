@@ -6,14 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <com.brioal.adtextviewlib.view.ADTextView
         android:id="@+id/ad_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        app:ad_text_view_interval="2000"
-        app:ad_text_view_speed="3"/>
+        android:padding="10dp"
+        />
 
 
 </RelativeLayout>
