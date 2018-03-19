@@ -57,7 +57,8 @@ mADTextView = findViewById(R.id.ad_textview);
 ```
 ### 核心方法是`.init(List<string> list , OnAdChangeListener listener);`,传入的List即为数据源,组件将会滚动显示传入的数据,另外可以设置间隔时间和进入退出的动画,另外在`OnAdChangeListener`的回掉里面可以对TextView进行进一步的定制,在回掉里卖弄修改的内容会被实时的显示上去
 ### 提供的主要方法列表
---|--
+
+---- | ----
 ` setInterval(int interval)`|设置间隔时间
 `setAnimationIn(int animationIn)`|设置进入动画
 `setAnimationOut(int animationOut)`|设置退出动画
