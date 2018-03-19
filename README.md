@@ -59,6 +59,7 @@ mADTextView = findViewById(R.id.ad_textview);
 ### 提供的主要方法列表
 
 ---- | ----
+
 ` setInterval(int interval)`|设置间隔时间
 `setAnimationIn(int animationIn)`|设置进入动画
 `setAnimationOut(int animationOut)`|设置退出动画
