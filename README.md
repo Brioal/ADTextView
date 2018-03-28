@@ -66,3 +66,5 @@ mADTextView = findViewById(R.id.ad_textview);
 
 #### 注:必须调用init方法,否则不显示内容
 
+### 另外我建了个qq群,方便交流,欢迎各种大神,新手老手加入,群号码:375276053
+
