@@ -45,17 +45,23 @@ mADTextView = findViewById(R.id.ad_textview);
         mADTextView.setInterval(2000);
         mADTextView.init(texts,new OnAdChangeListener() {
             @Override
-            public void DiyTextView(TextView textView) {
+            public void DiyTextView(TextView textView, final int index) {
                 textView.setTextSize(20);
                 textView.setTextColor(Color.WHITE);
                 SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText());
-                builder.setSpan(new ForegroundColorSpan(Color.RED),0,2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                builder.setSpan(new ForegroundColorSpan(Color.RED), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 textView.setText(builder);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(AdTextViewActivity.this, "点击了第" + (index + 1) + "个TextView", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
         });
 ```
-### 核心方法是`.init(List<string> list , OnAdChangeListener listener);`,传入的List即为数据源,组件将会滚动显示传入的数据,另外可以设置间隔时间和进入退出的动画,另外在`OnAdChangeListener`的回掉里面可以对TextView进行进一步的定制,在回掉里卖弄修改的内容会被实时的显示上去
+### 核心方法是`.init(List<string> list , OnAdChangeListener listener);`,传入的List即为数据源,组件将会滚动显示传入的数据,另外可以设置间隔时间和进入退出的动画,另外在`OnAdChangeListener`的回掉里面可以对TextView进行进一步的定制,在回掉里修改的内容会被实时的显示上去
 ### 提供的主要方法列表
 方法|作用|
 ---- | ----
