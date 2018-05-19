@@ -7,6 +7,5 @@ import android.widget.TextView;
  */
 
 public interface OnAdChangeListener {
-    void DiyTextView (TextView textView);
-
+    void DiyTextView(TextView textView, int index);
 }

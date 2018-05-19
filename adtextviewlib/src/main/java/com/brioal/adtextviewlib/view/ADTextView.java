@@ -27,7 +27,7 @@ import java.util.TimerTask;
  */
 
 public class ADTextView extends TextSwitcher {
-    private int mInterval=3000; //文字停留在中间的时长
+    private int mInterval = 3000; //文字停留在中间的时长
     private int mSizeCount;//内容数量大小
     private Handler mHandler = new Handler();
     private int mAnimationIn = R.anim.anim_in_default;//进入的动画
@@ -39,7 +39,7 @@ public class ADTextView extends TextSwitcher {
     private List<String> mTexts = new ArrayList<>();
 
     public ADTextView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ADTextView(Context context, AttributeSet attrs) {
@@ -49,6 +49,7 @@ public class ADTextView extends TextSwitcher {
 
     /**
      * 设置进入动画
+     *
      * @param animationIn
      * @return
      */
@@ -59,6 +60,7 @@ public class ADTextView extends TextSwitcher {
 
     /**
      * 设置间隔时间
+     *
      * @param interval
      */
     public ADTextView setInterval(int interval) {
@@ -69,6 +71,7 @@ public class ADTextView extends TextSwitcher {
 
     /**
      * 设置退出动画
+     *
      * @return
      */
     public ADTextView setAnimationOut(int animationOut) {
@@ -97,17 +100,17 @@ public class ADTextView extends TextSwitcher {
         setFactory(new ViewFactory() {
             @Override
             public View makeView() {
-                    mDefaultTextView = new TextView(mContext);
-                    mDefaultTextView.setTextSize(14);
-                    mDefaultTextView.setTextColor(Color.BLACK);
-                    return mDefaultTextView;
+                mDefaultTextView = new TextView(mContext);
+                mDefaultTextView.setTextSize(14);
+                mDefaultTextView.setTextColor(Color.BLACK);
+                return mDefaultTextView;
 
             }
         });
         //开始滚动
         //设置文字
         setText(mTexts.get(mCurrentIndex));
-        mChangeListener.DiyTextView((TextView) getCurrentView());
+        mChangeListener.DiyTextView((TextView) getCurrentView(), mCurrentIndex);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -118,7 +121,7 @@ public class ADTextView extends TextSwitcher {
                 }
                 //设置i文字
                 setText(mTexts.get(mCurrentIndex));
-                mChangeListener.DiyTextView((TextView) getCurrentView());
+                mChangeListener.DiyTextView((TextView) getCurrentView(), mCurrentIndex);
                 //进行下一次
                 mHandler.postDelayed(this, mInterval);
             }
